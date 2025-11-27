@@ -1,8 +1,22 @@
+const __IMPORT_META: any = import.meta;
+console.log("DEBUG: import.meta.env keys:", Object.keys(__IMPORT_META.env || {}));
+console.log(
+  "DEBUG: VITE_GEMINI_API_KEY =",
+  __IMPORT_META.env?.VITE_GEMINI_API_KEY ? "SET" : "UNDEFINED"
+);
+
+const __GEMINI_KEY = __IMPORT_META.env?.VITE_GEMINI_API_KEY;
+
 import { GoogleGenAI, Type } from "@google/genai";
 import { Transaction, Category, TransactionType } from '../types';
 import { DEFAULT_CATEGORIES } from '../constants';
 
-const ai = new GoogleGenAI({ apiKey: import.meta.env.VITE_GEMINI_API_KEY });
+const apiKey = (import.meta as any).env.VITE_GEMINI_API_KEY;
+
+const ai = new GoogleGenAI({
+  apiKey: apiKey
+});
+
 
 export const categorizeTransaction = async (description: string): Promise<Category> => {
   if (!description) return 'Uncategorized';
