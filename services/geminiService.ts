@@ -2,7 +2,7 @@ import { GoogleGenAI, Type } from "@google/genai";
 import { Transaction, Category, TransactionType } from '../types';
 import { DEFAULT_CATEGORIES } from '../constants';
 
-const ai = new GoogleGenAI({ apiKey: process.env.API_KEY as string });
+const ai = new GoogleGenAI({ apiKey: import.meta.env.VITE_GEMINI_API_KEY });
 
 export const categorizeTransaction = async (description: string): Promise<Category> => {
   if (!description) return 'Uncategorized';
