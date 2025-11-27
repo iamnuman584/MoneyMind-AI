@@ -1,0 +1,8 @@
+{
+  "name": "Copy of MoneyMind AI",
+  "description": "An AI-powered finance tracker to manage income, expenses, budgets, and savings goals with intelligent insights and Indian currency formatting.",
+  "requestFramePermissions": [
+    "camera",
+    "microphone"
+  ]
+}
